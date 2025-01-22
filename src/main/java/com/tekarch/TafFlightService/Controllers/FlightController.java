@@ -1,6 +1,6 @@
 package com.tekarch.TafFlightService.Controllers;
 
-import com.tekarch.TafFlightService.DTO.FlightDTO;
+import com.tekarch.TafFlightService.Flight.Flight;
 import com.tekarch.TafFlightService.Services.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,29 +18,29 @@ public class FlightController {
     private FlightService flightService;
 
     @PostMapping
-    public ResponseEntity<FlightDTO> createFlight(@RequestBody FlightDTO flightDTO) {
-        FlightDTO createdFlight = flightService.createFlight(flightDTO);
+    public ResponseEntity<Flight> createFlight(@RequestBody Flight flight) {
+        Flight createdFlight = flightService.createFlight(flight);
         return new ResponseEntity<>(createdFlight, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<FlightDTO> getFlightById(@PathVariable Long id) {
-        FlightDTO flight = flightService.getFlightById(id);
+    public ResponseEntity<Flight> getFlightById(@PathVariable Long id) {
+        Flight flight = flightService.getFlightById(id);
         return new ResponseEntity<>(flight, HttpStatus.OK);
     }
 
     @GetMapping
-    public ResponseEntity<List<FlightDTO>> getAllFlights() {
-        List<FlightDTO> flights = flightService.getAllFlights();
+    public ResponseEntity<List<Flight>> getAllFlights() {
+        List<Flight> flights = flightService.getAllFlights();
         return new ResponseEntity<>(flights, HttpStatus.OK);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<FlightDTO> updateFlight(
+    public ResponseEntity<Flight> updateFlight(
             @PathVariable Long id,
-            @RequestBody FlightDTO flightDTO
+            @RequestBody Flight flightDTO
     ) {
-        FlightDTO updatedFlight = flightService.updateFlight(id, flightDTO);
+        Flight updatedFlight = flightService.updateFlight(id, flightDTO);
         return new ResponseEntity<>(updatedFlight, HttpStatus.OK);
     }
 

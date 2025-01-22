@@ -1,7 +1,7 @@
 package com.tekarch.TafFlightService.Services;
 
 
-import com.tekarch.TafFlightService.DTO.FlightDTO;
+import com.tekarch.TafFlightService.Flight.Flight;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -21,30 +21,28 @@ public class FlightServiceImpl implements FlightService {
 
 
     @Override
-    public FlightDTO createFlight(FlightDTO flightDTO) {
-        return restTemplate.postForObject(datastoreServiceUrl , flightDTO ,FlightDTO.class);
+    public Flight createFlight(Flight flight) {
+        return restTemplate.postForObject(datastoreServiceUrl , flight , Flight.class);
     }
 
     @Override
-    public FlightDTO getFlightById(Long id) {
-        return restTemplate.getForObject(datastoreServiceUrl , FlightDTO.class);
+    public Flight getFlightById(Long id) {
+        return restTemplate.getForObject(datastoreServiceUrl + "/" + id, Flight.class);
     }
 
     @Override
-    public List<FlightDTO> getAllFlights() {
-        FlightDTO[] flightsArray = restTemplate.getForObject(datastoreServiceUrl , FlightDTO[].class);
-        return Arrays.asList(flightsArray);
+    public List<Flight> getAllFlights() {
+        return Arrays.asList(restTemplate.getForObject(datastoreServiceUrl, Flight[].class));
     }
 
     @Override
-    public FlightDTO updateFlight(Long id, FlightDTO flightDTO) {
-         restTemplate.put(datastoreServiceUrl ,flightDTO, FlightDTO.class);
-        return flightDTO;
+    public Flight updateFlight(Long id, Flight flight) {
+        restTemplate.put(datastoreServiceUrl + "/" + id, flight);
+        return flight;
     }
 
     @Override
     public void deleteFlight(Long id) {
-        restTemplate.delete(datastoreServiceUrl , id);
-
+        restTemplate.delete(datastoreServiceUrl + "/" + id);
     }
 }

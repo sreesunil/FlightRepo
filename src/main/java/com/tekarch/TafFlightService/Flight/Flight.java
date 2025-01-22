@@ -1,8 +1,8 @@
-package com.tekarch.TafFlightService.DTO;
+package com.tekarch.TafFlightService.Flight;
 
 import java.time.LocalDateTime;
 
-public class FlightDTO {
+public class Flight {
 
 
     private Long flightId;

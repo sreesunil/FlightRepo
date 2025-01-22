@@ -1,14 +1,14 @@
 package com.tekarch.TafFlightService.Services;
 
-import com.tekarch.TafFlightService.DTO.FlightDTO;
+import com.tekarch.TafFlightService.Flight.Flight;
 
 import java.util.List;
 
 public interface FlightService {
 
-    FlightDTO createFlight(FlightDTO flightDTO);
-    FlightDTO getFlightById(Long id);
-    List<FlightDTO> getAllFlights();
-    FlightDTO updateFlight(Long id, FlightDTO flightDTO);
+    Flight createFlight(Flight flight);
+    Flight getFlightById(Long id);
+    List<Flight> getAllFlights();
+    Flight updateFlight(Long id, Flight flight);
     void deleteFlight(Long id);
 }
