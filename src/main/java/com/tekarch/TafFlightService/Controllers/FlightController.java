@@ -32,7 +32,7 @@ public class FlightController {
     @GetMapping
     public ResponseEntity<List<Flight>> getAllFlights() {
         List<Flight> flights = flightService.getAllFlights();
-        return new ResponseEntity<>(flights, HttpStatus.OK);
+        return ResponseEntity.ok(flights);
     }
 
     @PutMapping("/{id}")
